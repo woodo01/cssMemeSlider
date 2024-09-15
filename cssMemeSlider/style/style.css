@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo Chettan 2', sans-serif;
+}
+body {
+  background-color: #1c1e20;
+}
+
+.slider {
+  margin: 5% auto;
+  width: 31.25rem;
+  max-width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: 'slides slides' 'captions dots';
+  row-gap: 2rem;
+}
+
+.slider input {
+  display: none;
+}
+
+.slides {
+  grid-area: slides;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides-wrapper {
+  display: flex;
+  width: 500%;
+  transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.slides img {
+  max-width: 20%;
+}
+
+.captions {
+  grid-area: captions;
+  width: 100%;
+  overflow: hidden;
+}
+.captions-wrapper {
+  display: flex;
+  width: 500%;
+  transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.caption {
+  width: 20%;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1rem;
+  color: #ffffff;
+  text-align: left;
+}
+
+.dots {
+  grid-area: dots;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.dots label {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: #6098fe;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.dots label:hover {
+  background-color: #ffffff;
+}
+
+#radio-1:checked ~ .slides .slides-wrapper,
+#radio-1:checked ~ .captions .captions-wrapper {
+  margin-left: 0;
+}
+
+#radio-2:checked ~ .slides .slides-wrapper,
+#radio-2:checked ~ .captions .captions-wrapper {
+  margin-left: -100%;
+}
+
+#radio-3:checked ~ .slides .slides-wrapper,
+#radio-3:checked ~ .captions .captions-wrapper {
+  margin-left: -200%;
+}
+
+#radio-4:checked ~ .slides .slides-wrapper,
+#radio-4:checked ~ .captions .captions-wrapper {
+  margin-left: -300%;
+}
+
+#radio-5:checked ~ .slides .slides-wrapper,
+#radio-5:checked ~ .captions .captions-wrapper {
+  margin-left: -400%;
+}
+
+#radio-1:checked ~ .dots #label-1,
+#radio-2:checked ~ .dots #label-2,
+#radio-3:checked ~ .dots #label-3,
+#radio-4:checked ~ .dots #label-4,
+#radio-5:checked ~ .dots #label-5 {
+  border: 0.125rem solid #6098fe;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+#radio-1:checked ~ .dots #label-1:hover,
+#radio-2:checked ~ .dots #label-2:hover,
+#radio-3:checked ~ .dots #label-3:hover,
+#radio-4:checked ~ .dots #label-4:hover,
+#radio-5:checked ~ .dots #label-5:hover {
+  border-color: #ffffff;
+}
+
+@media (max-width: 560px) {
+  .slider {
+    display: grid;
+    grid-template-rows: 3fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'slides' 'dots' 'captions';
+  }
+
+  .caption {
+    padding: 0 2%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 510px) {
+  .slides img {
+    padding: 0 2%;
+  }
+}
